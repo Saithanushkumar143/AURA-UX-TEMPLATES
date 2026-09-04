@@ -58,6 +58,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/templates/celebrations/cinematic-birthday" className="hover:text-purple-400 transition-colors flex items-center gap-1 font-semibold text-rose-300">
+                  <Sparkles className="w-3 h-3 text-rose-400" /> Cinematic Birthday Film
+                </Link>
+              </li>
+              <li>
                 <Link href="/templates/celebrations/wedding-elegance" className="hover:text-purple-400 transition-colors flex items-center gap-1">
                   Eternal Union Wedding
                 </Link>

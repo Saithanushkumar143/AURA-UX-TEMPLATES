@@ -60,6 +60,21 @@ export const TEMPLATES: TemplateItem[] = [
 
   // --- CELEBRATIONS TEMPLATES ---
   {
+    id: "cinematic-birthday",
+    title: "Cinematic Birthday Film & Letter",
+    category: "celebrations",
+    categoryLabel: "Celebrations & Cinematic",
+    description: "Four-act cinematic birthday film with interactive Cupid bow & arrow, rose burst, kinetic 3D typography, blossoming heart canvas tree, vintage polaroid photo gallery, and wax-sealed love letter.",
+    features: ["Interactive Bow & Arrow Physics", "Canvas 2D Blossoming Tree", "Vintage Polaroid Photo Grid", "Wax-Sealed Love Letter & Wishes Wall"],
+    tags: ["Cinematic", "Birthday", "GSAP Animation", "Photo Grid", "Love Letter"],
+    path: "/templates/celebrations/cinematic-birthday",
+    previewUrl: "/preview/celebrations/cinematic-birthday",
+    gradient: "from-rose-600 via-pink-600 to-amber-400",
+    badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
+    popular: true,
+    new: true,
+  },
+  {
     id: "wedding-elegance",
     title: "Eternal Union Wedding",
     category: "celebrations",
@@ -71,7 +86,6 @@ export const TEMPLATES: TemplateItem[] = [
     previewUrl: "/preview/celebrations/wedding-elegance",
     gradient: "from-rose-500 via-pink-500 to-amber-400",
     badgeColor: "bg-rose-500/20 text-rose-300 border-rose-500/30",
-    popular: true,
   },
   {
     id: "birthday-party",
@@ -85,7 +99,6 @@ export const TEMPLATES: TemplateItem[] = [
     previewUrl: "/preview/celebrations/birthday-party",
     gradient: "from-amber-500 via-orange-500 to-red-500",
     badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-    new: true,
   },
   {
     id: "anniversary-gala",
