@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { ArrowLeft, Sparkles, Heart, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Heart, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
 
 interface ReasonCardItem {
   id: number;
@@ -169,12 +168,9 @@ export default function ReasonsLoveJarPage() {
       {/* Top Template Navigation */}
       <header className="sticky top-0 z-40 bg-[#fffaf6]/90 backdrop-blur-md border-b border-[#ffd3da] px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#6e5a6e] hover:text-[#3a2138] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-[#ff5a8a] uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ffe5ec] border border-[#ff5a8a]/30 text-xs font-bold text-[#ff5a8a]">
             <Heart className="w-3.5 h-3.5 fill-[#ff5a8a]" />
             <span>Reasons Love Jar Edition</span>

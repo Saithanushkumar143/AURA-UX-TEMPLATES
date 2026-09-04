@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
-  ArrowLeft,
   Briefcase,
   Award,
   Calendar,
@@ -20,20 +18,11 @@ export default function ConsultingProTemplate() {
 
   return (
     <div className="min-h-screen bg-[#061011] text-zinc-100 font-sans selection:bg-teal-500 selection:text-white">
-      {/* Top Banner & Quick Hub Return */}
-      <div className="bg-teal-950/80 border-b border-teal-900/50 px-4 py-2 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="font-semibold text-teal-300 hover:text-white flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" /> Aura UX Hub
-          </Link>
-          <span className="text-zinc-600">&bull;</span>
-          <span className="text-zinc-400">Folder: <code className="text-teal-400 font-mono">/templates/business/consulting-pro</code></span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full font-mono text-[10px] border border-teal-500/30">
-            BUSINESS TEMPLATE
-          </span>
-        </div>
+      {/* Top Banner */}
+      <div className="bg-teal-950/80 border-b border-teal-900/50 px-4 py-2 flex items-center justify-center text-xs">
+        <span className="bg-teal-500/20 text-teal-300 px-3 py-0.5 rounded-full font-mono text-[10px] border border-teal-500/30 font-bold uppercase tracking-wider">
+          AURA UX TEMPLATE
+        </span>
       </div>
 
       {/* Advisory Header */}
@@ -180,10 +169,8 @@ export default function ConsultingProTemplate() {
 
       {/* Footer */}
       <footer className="border-t border-teal-950 py-10 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-        <p>&copy; {new Date().getFullYear()} Vanguard Advisory &bull; An Aura UX Business Template.</p>
-        <Link href="/" className="text-teal-400 hover:underline">
-          Return to Aura UX Template Hub
-        </Link>
+        <p>&copy; {new Date().getFullYear()} Vanguard Advisory</p>
+        <span className="text-teal-400 font-mono text-[11px]">Aura UX Template</span>
       </footer>
     </div>
   );

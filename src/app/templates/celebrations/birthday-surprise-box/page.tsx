@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { ArrowLeft, Sparkles, Heart, Gift, Tag, Check, RefreshCw, ChevronRight, PartyPopper } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Heart, Gift, Tag, Check, RefreshCw, ChevronRight, PartyPopper } from "lucide-react";
 
 interface Coupon {
   id: number;
@@ -132,12 +131,9 @@ export default function BirthdaySurpriseBoxPage() {
       {/* Header Bar */}
       <header className="sticky top-0 z-40 bg-[#fff8fb]/80 backdrop-blur-md border-b border-pink-200/50 px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-purple-700 hover:text-pink-600 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-pink-600 uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-100 border border-pink-300/60 text-xs font-extrabold text-pink-600">
             <Gift className="w-3.5 h-3.5 text-pink-500" />
             <span>Interactive Unboxing Surprise</span>

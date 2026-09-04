@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { ArrowLeft, Sparkles, Heart, Send, Award, PartyPopper, MessageCircle } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Heart, Send, Award, PartyPopper, MessageCircle } from "lucide-react";
 
 interface ChatMsg {
   id: number;
@@ -163,12 +162,9 @@ export default function BirthdayBestieScrapbookPage() {
       {/* Top Header Navigation */}
       <header className="sticky top-0 z-40 bg-[#fffef7]/90 backdrop-blur-md border-b border-[#f1e2c7] px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#7b5e5e] hover:text-[#3f2e2e] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-[#e26a3d] uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fff7e2] border border-[#ffc857]/50 text-xs font-bold text-[#e26a3d]">
             <Sparkles className="w-3.5 h-3.5 text-[#ff8c61]" />
             <span>Bestie Scrapbook Edition</span>

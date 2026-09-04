@@ -1,11 +1,9 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
 import {
   ShoppingBag,
   Search,
-  ArrowLeft,
   Star,
   Plus,
   Minus,
@@ -282,17 +280,9 @@ export default function YourNextStoreTemplate() {
   return (
     <div className="min-h-screen bg-[#09090b] text-zinc-100 antialiased font-sans selection:bg-blue-500 selection:text-white">
       {/* Top Announcement Bar */}
-      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-4 py-2 text-center text-xs font-medium text-white flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="hover:underline flex items-center gap-1 font-semibold text-white/90">
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to Aura UX Hub
-          </Link>
-        </div>
-        <span className="hidden sm:inline">
-          🚀 Use code <strong className="underline font-mono bg-white/20 px-1.5 py-0.5 rounded">AURAUX20</strong> for 20% off all orders &bull; Free express shipping on orders $200+
-        </span>
-        <span className="text-[10px] uppercase font-mono px-2 py-0.5 bg-white/20 rounded-full font-bold">
-          BUSINESS / E-COMMERCE
+      <div className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 px-4 py-2 text-center text-xs font-medium text-white flex items-center justify-center">
+        <span className="text-[11px] uppercase font-mono tracking-wider font-bold">
+          AURA UX TEMPLATE
         </span>
       </div>
 
@@ -909,10 +899,8 @@ export default function YourNextStoreTemplate() {
 
       {/* Storefront Footer */}
       <footer className="border-t border-zinc-900 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-        <p>&copy; {new Date().getFullYear()} Your Next Store &bull; An Aura UX Business E-Commerce Template.</p>
-        <Link href="/" className="text-blue-400 hover:underline">
-          Return to Aura UX Template Hub
-        </Link>
+        <p>&copy; {new Date().getFullYear()} Your Next Store</p>
+        <span className="text-blue-400 font-mono text-[11px]">Aura UX Template</span>
       </footer>
     </div>
   );

@@ -7,7 +7,6 @@ import {
   Sparkles,
   Play,
   Pause,
-  ArrowLeft,
   X,
   PartyPopper,
   Flame,
@@ -17,7 +16,6 @@ import {
   Award,
   ChevronRight,
 } from "lucide-react";
-import Link from "next/link";
 
 interface QuizQuestion {
   id: number;
@@ -285,12 +283,9 @@ export default function BirthdayLuxCelebrationPage() {
       {/* Top Template Navigation Header */}
       <header className="sticky top-0 z-40 bg-[#fdf8f3]/80 backdrop-blur-md border-b border-[#c9a0c8]/20 px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-medium text-[#8a7a8d] hover:text-[#2a1f2e] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-[#c9a0c8] uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fde8ef] border border-[#f9a0b0]/40 text-xs font-semibold text-[#c9a0c8]">
             <Sparkles className="w-3.5 h-3.5 text-[#f9a0b0]" />
             <span>Aura Luxe Birthday Experience</span>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { 
   ArrowUpRight, 
   Check, 
@@ -13,7 +12,6 @@ import {
   Star, 
   Building2, 
   Send, 
-  ArrowLeft,
   Sparkles,
   Award,
   ChevronRight
@@ -25,20 +23,11 @@ export default function CorporateAgencyTemplate() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 antialiased font-sans selection:bg-indigo-500 selection:text-white">
-      {/* Top Banner & Quick Hub Return */}
-      <div className="bg-indigo-950/80 border-b border-indigo-900/50 px-4 py-2 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="font-semibold text-indigo-300 hover:text-white flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" /> Aura UX Hub
-          </Link>
-          <span className="text-zinc-600">&bull;</span>
-          <span className="text-zinc-400">Folder: <code className="text-indigo-400 font-mono">/templates/business/corporate-agency</code></span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-full font-mono text-[10px] border border-indigo-500/30">
-            BUSINESS TEMPLATE
-          </span>
-        </div>
+      {/* Top Banner */}
+      <div className="bg-indigo-950/80 border-b border-indigo-900/50 px-4 py-2 flex items-center justify-center text-xs">
+        <span className="bg-indigo-500/20 text-indigo-300 px-3 py-0.5 rounded-full font-mono text-[10px] border border-indigo-500/30 font-bold uppercase tracking-wider">
+          AURA UX TEMPLATE
+        </span>
       </div>
 
       {/* Agency Navigation */}
@@ -306,10 +295,8 @@ export default function CorporateAgencyTemplate() {
 
       {/* Agency Footer */}
       <footer className="border-t border-zinc-900 py-12 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-        <p>&copy; {new Date().getFullYear()} Apex Agency Pro &bull; An Aura UX Business Template.</p>
-        <Link href="/" className="text-indigo-400 hover:underline">
-          Return to Aura UX Template Hub
-        </Link>
+        <p>&copy; {new Date().getFullYear()} Apex Agency Pro</p>
+        <span className="text-indigo-400 font-mono text-[11px]">Aura UX Template</span>
       </footer>
     </div>
   );

@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import {
-  ArrowLeft,
   Check,
   Zap,
   Shield,
@@ -23,20 +21,11 @@ export default function SaasStartupTemplate() {
 
   return (
     <div className="min-h-screen bg-[#070709] text-zinc-100 font-sans selection:bg-purple-500 selection:text-white">
-      {/* Top Banner & Quick Hub Return */}
-      <div className="bg-purple-950/80 border-b border-purple-900/50 px-4 py-2 flex items-center justify-between text-xs">
-        <div className="flex items-center gap-2">
-          <Link href="/" className="font-semibold text-purple-300 hover:text-white flex items-center gap-1">
-            <ArrowLeft className="w-3.5 h-3.5" /> Aura UX Hub
-          </Link>
-          <span className="text-zinc-600">&bull;</span>
-          <span className="text-zinc-400">Folder: <code className="text-purple-400 font-mono">/templates/business/saas-startup</code></span>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full font-mono text-[10px] border border-purple-500/30">
-            BUSINESS TEMPLATE
-          </span>
-        </div>
+      {/* Top Banner */}
+      <div className="bg-purple-950/80 border-b border-purple-900/50 px-4 py-2 flex items-center justify-center text-xs">
+        <span className="bg-purple-500/20 text-purple-300 px-3 py-0.5 rounded-full font-mono text-[10px] border border-purple-500/30 font-bold uppercase tracking-wider">
+          AURA UX TEMPLATE
+        </span>
       </div>
 
       {/* SaaS Navigation */}
@@ -260,10 +249,8 @@ export default function SaasStartupTemplate() {
 
       {/* SaaS Footer */}
       <footer className="border-t border-zinc-900 py-12 px-6 max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-        <p>&copy; {new Date().getFullYear()} CloudFlow SaaS &bull; An Aura UX Business Template.</p>
-        <Link href="/" className="text-purple-400 hover:underline">
-          Return to Aura UX Template Hub
-        </Link>
+        <p>&copy; {new Date().getFullYear()} CloudFlow SaaS</p>
+        <span className="text-purple-400 font-mono text-[11px]">Aura UX Template</span>
       </footer>
     </div>
   );

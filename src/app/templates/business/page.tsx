@@ -4,8 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TemplateCard from "@/components/TemplateCard";
 import { TEMPLATES } from "@/data/templates";
-import { Briefcase, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Briefcase } from "lucide-react";
 
 export default function BusinessTemplatesPage() {
   const businessTemplates = TEMPLATES.filter((t) => t.category === "business");
@@ -15,14 +14,6 @@ export default function BusinessTemplatesPage() {
       <Navbar />
 
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-        {/* Breadcrumb / Top Link */}
-        <Link
-          href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-white transition-colors mb-6"
-        >
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to All Templates
-        </Link>
-
         {/* Header */}
         <div className="space-y-3 mb-10 pb-8 border-b border-zinc-800">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-medium">

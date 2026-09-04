@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { ArrowLeft, Sparkles, Heart, Award, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Heart, Award, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
 
 const ALBUM_POLAROIDS = [
   {
@@ -61,12 +60,9 @@ export default function AnniversaryForeverVowsPage() {
       {/* Top Template Navigation Bar */}
       <header className="sticky top-0 z-40 bg-[#fffaf0]/90 backdrop-blur-md border-b border-[#dcb166]/40 px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#8b6f77] hover:text-[#4a3540] transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-[#b98e3f] uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fff5f1] border border-[#dcb166]/60 text-xs font-bold text-[#b98e3f]">
             <Sparkles className="w-3.5 h-3.5 text-[#dcb166]" />
             <span>Forever & Always Anniversary</span>

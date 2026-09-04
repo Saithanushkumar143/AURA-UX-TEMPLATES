@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { ArrowLeft, Sparkles, Heart, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
-import Link from "next/link";
+import { Sparkles, Heart, RefreshCw, CheckCircle2, PartyPopper } from "lucide-react";
 
 export default function LoveNoteWifeyPage() {
   const [currentScene, setCurrentScene] = useState(1);
@@ -45,12 +44,9 @@ export default function LoveNoteWifeyPage() {
       {/* Top Header Navigation */}
       <header className="sticky top-0 z-40 bg-[#fff0f6]/80 backdrop-blur-md border-b border-pink-200/60 px-4 py-3">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link
-            href="/templates/celebrations"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-purple-700 hover:text-pink-600 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Celebrations
-          </Link>
+          <span className="text-xs font-bold text-pink-700 uppercase tracking-wider font-mono">
+            Aura UX Template
+          </span>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-100 border border-pink-300 text-xs font-bold text-pink-600">
             <Heart className="w-3.5 h-3.5 fill-pink-500 text-pink-500" />
             <span>Romantic Love Note Edition</span>
