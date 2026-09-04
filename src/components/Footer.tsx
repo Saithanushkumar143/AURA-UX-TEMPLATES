@@ -33,6 +33,11 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
+                <Link href="/templates/business/your-next-store" className="hover:text-purple-400 transition-colors flex items-center gap-1 font-semibold text-blue-300">
+                  <Sparkles className="w-3 h-3 text-blue-400" /> YourNextStore Commerce
+                </Link>
+              </li>
+              <li>
                 <Link href="/templates/business/corporate-agency" className="hover:text-purple-400 transition-colors flex items-center gap-1">
                   Apex Agency Pro
                 </Link>

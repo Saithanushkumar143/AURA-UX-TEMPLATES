@@ -2,8 +2,16 @@ import type { Config } from "tailwindcss";
 
 export default {
   content: [
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  safelist: [
+    {
+      pattern: /(from|via|to)-(blue|cyan|indigo|violet|purple|fuchsia|pink|emerald|teal|amber|yellow|rose|zinc)-(400|500|600|700|800|900|950)/,
+    },
+    {
+      pattern: /(bg|text|border)-(blue|cyan|indigo|violet|purple|fuchsia|pink|emerald|teal|amber|yellow|rose|zinc)-(300|400|500|600|700|800|900)/,
+      variants: ["hover", "focus", "group-hover"],
+    },
   ],
   theme: {
     extend: {

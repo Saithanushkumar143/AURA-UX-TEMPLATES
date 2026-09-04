@@ -17,6 +17,21 @@ export interface TemplateItem {
 export const TEMPLATES: TemplateItem[] = [
   // --- BUSINESS TEMPLATES ---
   {
+    id: "your-next-store",
+    title: "YourNextStore Commerce",
+    category: "business",
+    categoryLabel: "Business & E-Commerce",
+    description: "Modern, high-converting Next.js e-commerce storefront featuring interactive cart drawer, quick product view, variant selectors, promo codes, and instant checkout flow.",
+    features: ["Interactive Shopping Bag Drawer", "Color & Size Variant Selectors", "Free Shipping Progress Meter", "1-Click Express Checkout Simulator"],
+    tags: ["E-Commerce", "Store", "Shopify/Next", "D2C", "Modern"],
+    path: "/templates/business/your-next-store",
+    previewUrl: "/preview/business/your-next-store",
+    gradient: "from-blue-600 via-cyan-600 to-indigo-700",
+    badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+    popular: true,
+    new: true,
+  },
+  {
     id: "corporate-agency",
     title: "Apex Agency Pro",
     category: "business",

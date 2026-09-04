@@ -15,15 +15,17 @@ AURA UX TEMPLATES/
 │   │   ├── templates/                         # 📁 TEMPLATES DIRECTORY
 │   │   │   │
 │   │   │   ├── business/                      # 🏢 1. BUSINESS FOLDER
-│   │   │   │   ├── corporate-agency/          # Apex Agency Pro Template
-│   │   │   │   ├── saas-startup/              # CloudFlow SaaS Template
-│   │   │   │   ├── consulting-pro/            # Vanguard Advisory Template
+│   │   │   │   ├── your-next-store/           # 🛒 YourNextStore (Full E-Commerce Storefront)
+│   │   │   │   ├── corporate-agency/          # 💼 Apex Agency Pro (Design & Dev Studio)
+│   │   │   │   ├── saas-startup/              # ⚡ CloudFlow SaaS (Software & Cloud Platform)
+│   │   │   │   ├── consulting-pro/            # 🏛️ Vanguard Advisory (Executive & Capital)
 │   │   │   │   └── page.tsx                   # Business Showcase Catalog
 │   │   │   │
 │   │   │   └── celebrations/                  # 🎉 2. CELEBRATIONS FOLDER
-│   │   │       ├── wedding-elegance/          # Eternal Union Luxury Wedding Template
-│   │   │       ├── birthday-party/            # GlowNight VIP Birthday Bash Template
-│   │   │       ├── anniversary-gala/          # Golden Jubilee Gala Template
+│   │   │       ├── cinematic-birthday/        # 🎬 4-Act Film + Love Letter + Polaroid Grid
+│   │   │       ├── wedding-elegance/          # 💍 Eternal Union Luxury Wedding Portal
+│   │   │       ├── birthday-party/            # 🎈 GlowNight VIP Birthday Bash Template
+│   │   │       ├── anniversary-gala/          # 👑 Golden Jubilee Gala Template
 │   │   │       └── page.tsx                   # Celebrations Showcase Catalog
 │   │   │
 │   │   ├── preview/                           # 📱 Multi-Device Interactive Previewer
@@ -70,9 +72,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 Vercel will build and serve all templates under a single domain:
 - `your-domain.vercel.app/` &rarr; Main Aura UX Catalog
+- `your-domain.vercel.app/templates/business/your-next-store`
 - `your-domain.vercel.app/templates/business/corporate-agency`
 - `your-domain.vercel.app/templates/business/saas-startup`
 - `your-domain.vercel.app/templates/business/consulting-pro`
+- `your-domain.vercel.app/templates/celebrations/cinematic-birthday`
 - `your-domain.vercel.app/templates/celebrations/wedding-elegance`
 - `your-domain.vercel.app/templates/celebrations/birthday-party`
 - `your-domain.vercel.app/templates/celebrations/anniversary-gala`
