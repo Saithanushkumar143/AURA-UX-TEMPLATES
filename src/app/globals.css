@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #09090b;
+  --foreground: #f4f4f5;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom glow effects */
+.glow-purple {
+  box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.3);
+}
+
+.glow-amber {
+  box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.3);
+}
+
+.glow-pink {
+  box-shadow: 0 0 50px -10px rgba(236, 72, 153, 0.3);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(24, 24, 27, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
