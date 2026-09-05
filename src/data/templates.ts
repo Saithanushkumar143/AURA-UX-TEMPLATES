@@ -17,6 +17,21 @@ export interface TemplateItem {
 export const TEMPLATES: TemplateItem[] = [
   // --- BUSINESS TEMPLATES ---
   {
+    id: "luxe-beauty",
+    title: "Luxe Beauty & Makeup Artist",
+    category: "business",
+    categoryLabel: "Business & Beauty Artistry",
+    description: "Ultra-luxury Light-Themed 3D makeup artist & bridal portfolio in warm ivory & champagne gold, featuring 3D cosmetic floats, continuous scroll parallax journey, sticky 3-column editorial archive, interactive booking suites, and bespoke lookbook.",
+    features: ["3D Floating Cosmetics & Brushes", "Sticky 3-Column Editorial Archive", "Haute Bridal Service Suites & Pricing", "Interactive Reservation Inquiry Modal", "Client Love Stories 3D Carousel"],
+    tags: ["Beauty", "Makeup Artist", "Bridal", "Luxury Light", "3D Elements", "Editorial"],
+    path: "/templates/business/luxe-beauty",
+    previewUrl: "/preview/business/luxe-beauty",
+    gradient: "from-[#d4af37] via-[#f7efe3] to-[#faf7f2]",
+    badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+    popular: true,
+    new: true,
+  },
+  {
     id: "heritage-dining",
     title: "Zafran Heritage Dining",
     category: "business",
