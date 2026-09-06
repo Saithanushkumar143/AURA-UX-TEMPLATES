@@ -64,6 +64,14 @@ export default function Navbar() {
 
         {/* Action Button */}
         <div className="flex items-center gap-3">
+          <Link
+            href="/access-denied?reason=admin_portal"
+            className="flex items-center gap-1.5 text-xs text-purple-300 hover:text-white bg-purple-950/40 border border-purple-800/50 px-3 py-1.5 rounded-lg hover:border-purple-600 transition-colors"
+            title="Admin Passcode & Unlock Portal"
+          >
+            <Sparkles className="w-3 h-3 text-purple-400" />
+            <span>Admin Portal</span>
+          </Link>
           <a
             href="https://vercel.com"
             target="_blank"
