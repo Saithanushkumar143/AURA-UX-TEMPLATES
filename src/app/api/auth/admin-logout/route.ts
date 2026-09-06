@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
+import { ADMIN_COOKIE_NAME } from "@/lib/auth";
 
 export async function POST() {
   const response = NextResponse.json({
     success: true,
-    message: "Admin session cleared. Public restrictions restored.",
+    message: "Admin session logged out successfully.",
   });
 
-  // Clear admin session cookie
-  response.cookies.delete("aura_admin_session");
+  response.cookies.set({
+    name: ADMIN_COOKIE_NAME,
+    value: "",
+    httpOnly: true,
+    maxAge: 0,
+    path: "/",
+  });
+
   return response;
 }

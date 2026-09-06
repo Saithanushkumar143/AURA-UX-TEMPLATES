@@ -5,6 +5,9 @@
 :root {
   --background: #09090b;
   --foreground: #f4f4f5;
+  --gold-primary: #d4af37;
+  --gold-light: #fbf5b7;
+  --gold-dark: #996515;
 }
 
 body {
@@ -14,22 +17,41 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom glow effects */
-.glow-purple {
-  box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.3);
+/* Luxury Gold Glow Effects */
+.glow-gold {
+  box-shadow: 0 0 50px -10px rgba(212, 175, 55, 0.35);
+}
+
+.glow-gold-sm {
+  box-shadow: 0 0 25px -5px rgba(212, 175, 55, 0.25);
 }
 
 .glow-amber {
   box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.3);
 }
 
-.glow-pink {
-  box-shadow: 0 0 50px -10px rgba(236, 72, 153, 0.3);
+/* Metallic Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff2cc 0%, #ffd700 25%, #d4af37 50%, #f3e5ab 75%, #aa771c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-subtle {
+  background: linear-gradient(135deg, #f5e8cd 0%, #d4af37 50%, #b89025 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Metallic Gold Border & Badge */
+.gold-border-glow {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 /* Glassmorphism */
 .glass-panel {
-  background: rgba(24, 24, 27, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 18, 22, 0.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
 }

@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Eye, Sparkles, CheckCircle2, Monitor, Smartphone } from "lucide-react";
+import { ArrowRight, Eye, Sparkles, CheckCircle2, Monitor, Smartphone, Copy, Check, ExternalLink, Code } from "lucide-react";
 import { TemplateItem } from "@/data/templates";
 
 interface TemplateCardProps {
@@ -10,6 +11,24 @@ interface TemplateCardProps {
 
 export default function TemplateCard({ template }: TemplateCardProps) {
   const isBusiness = template.category === "business";
+  const [copiedLink, setCopiedLink] = useState(false);
+  const [copiedEmbed, setCopiedEmbed] = useState(false);
+
+  const productionDirectUrl = `https://aurauxtemplates.vercel.app${template.path}`;
+  const productionPreviewUrl = `https://aurauxtemplates.vercel.app${template.previewUrl}`;
+  const embedCode = `<iframe src="${productionDirectUrl}" width="100%" height="800" frameborder="0" allowfullscreen></iframe>`;
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(productionDirectUrl);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
+  const handleCopyEmbed = () => {
+    navigator.clipboard.writeText(embedCode);
+    setCopiedEmbed(true);
+    setTimeout(() => setCopiedEmbed(false), 2000);
+  };
 
   return (
     <div className="group relative rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-950/20 flex flex-col overflow-hidden">
@@ -47,7 +66,7 @@ export default function TemplateCard({ template }: TemplateCardProps) {
         </div>
 
         {/* Hover Quick View Overlay */}
-        <div className="absolute inset-0 bg-zinc-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 backdrop-blur-xs z-20">
+        <div className="absolute inset-0 bg-zinc-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 backdrop-blur-xs z-20">
           <Link
             href={template.path}
             className="px-4 py-2 rounded-xl bg-white text-zinc-950 font-semibold text-xs flex items-center gap-1.5 shadow-lg hover:scale-105 transition-transform"
@@ -83,6 +102,34 @@ export default function TemplateCard({ template }: TemplateCardProps) {
             </div>
           </div>
 
+          {/* External Website Integration Helper */}
+          <div className="p-3 rounded-xl bg-zinc-950/80 border border-zinc-800 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                External Website Link
+              </span>
+              <span className="text-[10px] text-purple-400 font-mono">aurauxtemplates.vercel.app</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handleCopyLink}
+                className="flex-1 py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-[11px] text-zinc-300 flex items-center justify-center gap-1.5 transition-colors"
+                title="Copy Direct URL for your other website"
+              >
+                {copiedLink ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3 text-zinc-400" />}
+                <span>{copiedLink ? "Copied Direct URL!" : "Copy URL"}</span>
+              </button>
+              <button
+                onClick={handleCopyEmbed}
+                className="py-1.5 px-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-[11px] text-zinc-300 flex items-center justify-center gap-1.5 transition-colors"
+                title="Copy iFrame Embed HTML"
+              >
+                {copiedEmbed ? <Check className="w-3 h-3 text-emerald-400" /> : <Code className="w-3 h-3 text-zinc-400" />}
+                <span>{copiedEmbed ? "Copied!" : "Embed"}</span>
+              </button>
+            </div>
+          </div>
+
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5 pt-1">
             {template.tags.map((tag, i) => (
@@ -103,7 +150,7 @@ export default function TemplateCard({ template }: TemplateCardProps) {
             className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 transition-colors"
           >
             <Smartphone className="w-3.5 h-3.5 text-purple-400" />
-            <span>Responsive Mode</span>
+            <span>Responsive View</span>
           </Link>
 
           <Link

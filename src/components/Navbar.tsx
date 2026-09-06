@@ -1,92 +1,124 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Sparkles, Briefcase, PartyPopper, LayoutGrid, ExternalLink } from "lucide-react";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import {
+  Briefcase,
+  PartyPopper,
+  LayoutGrid,
+  ShieldCheck,
+  LogOut,
+  Copy,
+  Check,
+} from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [copied, setCopied] = useState(false);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      await fetch("/api/auth/admin-logout", { method: "POST" });
+      router.push("/admin/login");
+      router.refresh();
+    } catch (err) {
+      console.error(err);
+      setIsLoggingOut(false);
+    }
+  };
+
+  const handleCopyBaseUrl = () => {
+    navigator.clipboard.writeText("https://aurauxtemplates.vercel.app");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-pink-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-200">
-            <Sparkles className="w-5 h-5 text-white" />
+    <header className="sticky top-0 z-50 w-full border-b border-amber-500/20 bg-[#070709]/85 backdrop-blur-xl shadow-lg shadow-black/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+        {/* Brand Logo with 3D Gold Logo */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-amber-500/20 border border-amber-500/30 group-hover:scale-105 group-hover:border-amber-400 transition-all duration-300 bg-black">
+            <Image
+              src="/logo.png"
+              alt="AURA UX Gold Monogram Logo"
+              fill
+              sizes="40px"
+              priority
+              className="object-cover"
+            />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
-              AURA <span className="text-purple-400 font-extrabold">UX</span>
-              <span className="text-[10px] uppercase px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono font-medium border border-purple-500/30">
-                Multi-Template
+            <span className="font-extrabold text-xl tracking-tight flex items-center gap-1.5 font-serif">
+              <span className="gold-gradient-text tracking-widest">AURA UX</span>
+              <span className="text-[9px] uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 font-mono font-bold border border-amber-500/30 tracking-wider">
+                Admin Panel
               </span>
             </span>
           </div>
         </Link>
 
         {/* Navigation Tabs */}
-        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-full border border-zinc-800">
+        <nav className="hidden md:flex items-center gap-1 bg-zinc-900/80 p-1 rounded-full border border-amber-500/20 shadow-inner">
           <Link
             href="/"
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors flex items-center gap-1.5 ${
+            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all flex items-center gap-1.5 ${
               pathname === "/"
-                ? "bg-purple-600 text-white shadow-sm"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
+                ? "bg-gradient-to-r from-[#d4af37] to-[#aa771c] text-black font-semibold shadow-md shadow-amber-500/25"
+                : "text-zinc-400 hover:text-amber-300 hover:bg-zinc-800/60"
             }`}
           >
             <LayoutGrid className="w-4 h-4" />
-            All Templates
+            Analog Catalog
           </Link>
           <Link
-            href="/templates/business"
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors flex items-center gap-1.5 ${
-              pathname.startsWith("/templates/business")
-                ? "bg-purple-600 text-white shadow-sm"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-            }`}
+            href="/templates/business/luxe-beauty"
+            className="px-4 py-1.5 rounded-full text-sm font-medium text-zinc-400 hover:text-amber-300 hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5"
           >
             <Briefcase className="w-4 h-4" />
-            Business
+            Business Suite
           </Link>
           <Link
-            href="/templates/celebrations"
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors flex items-center gap-1.5 ${
-              pathname.startsWith("/templates/celebrations")
-                ? "bg-purple-600 text-white shadow-sm"
-                : "text-zinc-400 hover:text-white hover:bg-zinc-800/50"
-            }`}
+            href="/templates/celebrations/cinematic-birthday"
+            className="px-4 py-1.5 rounded-full text-sm font-medium text-zinc-400 hover:text-amber-300 hover:bg-zinc-800/60 transition-colors flex items-center gap-1.5"
           >
             <PartyPopper className="w-4 h-4" />
-            Celebrations
+            Celebrations Suite
           </Link>
         </nav>
 
-        {/* Action Button */}
-        <div className="flex items-center gap-3">
-          <Link
-            href="/access-denied?reason=admin_portal"
-            className="flex items-center gap-1.5 text-xs text-purple-300 hover:text-white bg-purple-950/40 border border-purple-800/50 px-3 py-1.5 rounded-lg hover:border-purple-600 transition-colors"
-            title="Admin Passcode & Unlock Portal"
+        {/* Action Controls & Admin Status */}
+        <div className="flex items-center gap-2.5">
+          <button
+            onClick={handleCopyBaseUrl}
+            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-amber-200/90 bg-zinc-900/90 hover:bg-amber-950/30 border border-amber-500/30 hover:border-amber-400/60 px-3 py-1.5 rounded-xl transition-all shadow-sm"
+            title="Copy Base Production URL"
           >
-            <Sparkles className="w-3 h-3 text-purple-400" />
-            <span>Admin Portal</span>
-          </Link>
-          <a
-            href="https://vercel.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-zinc-200 border border-zinc-800 px-3 py-1.5 rounded-lg hover:border-zinc-700 transition-colors"
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-amber-400" />}
+            <span className="font-mono">{copied ? "Copied URL!" : "aurauxtemplates.vercel.app"}</span>
+          </button>
+
+          {/* Security Badge */}
+          <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-medium">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Tamper Guard Active</span>
+          </div>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-zinc-300 bg-zinc-900 hover:bg-red-500/20 hover:text-red-300 border border-zinc-800 hover:border-red-500/30 transition-all shadow-sm"
+            title="Log out from Admin Panel"
           >
-            <span>Single Project Vercel Setup</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
-          <Link
-            href="#templates-grid"
-            className="inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-md shadow-purple-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Explore Library
-          </Link>
+            <LogOut className="w-3.5 h-3.5" />
+            <span>{isLoggingOut ? "Locking..." : "Admin Lock"}</span>
+          </button>
         </div>
       </div>
     </header>

@@ -5,12 +5,27 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TemplateCard from "@/components/TemplateCard";
 import { TEMPLATES } from "@/data/templates";
-import { Briefcase, PartyPopper, LayoutGrid, Search, Sparkles, FolderGit2, Check, ArrowRight, ShieldCheck, Zap, Globe2 } from "lucide-react";
-import Link from "next/link";
+import Image from "next/image";
+import {
+  Briefcase,
+  PartyPopper,
+  LayoutGrid,
+  Search,
+  Sparkles,
+  ShieldCheck,
+  Zap,
+  Globe2,
+  Copy,
+  Check,
+  Lock,
+  Link2,
+} from "lucide-react";
 
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<"all" | "business" | "celebrations">("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [copiedBatch, setCopiedBatch] = useState(false);
+  const [copiedBase, setCopiedBase] = useState(false);
 
   const filteredTemplates = useMemo(() => {
     return TEMPLATES.filter((t) => {
@@ -26,57 +41,120 @@ export default function HomePage() {
   const businessCount = TEMPLATES.filter((t) => t.category === "business").length;
   const celebrationsCount = TEMPLATES.filter((t) => t.category === "celebrations").length;
 
+  const handleCopyBaseUrl = () => {
+    navigator.clipboard.writeText("https://aurauxtemplates.vercel.app");
+    setCopiedBase(true);
+    setTimeout(() => setCopiedBase(false), 2000);
+  };
+
+  const handleCopyAllLinks = () => {
+    const list = TEMPLATES.map(
+      (t) => `• ${t.title} (${t.category.toUpperCase()}): https://aurauxtemplates.vercel.app${t.path}`
+    ).join("\n");
+    navigator.clipboard.writeText(list);
+    setCopiedBatch(true);
+    setTimeout(() => setCopiedBatch(false), 2000);
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#09090b]">
+    <div className="min-h-screen flex flex-col bg-[#070709] selection:bg-[#d4af37] selection:text-black">
       <Navbar />
 
       <main className="flex-1">
-        {/* HERO SECTION */}
-        <section className="relative pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-          {/* Ambient Glows */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-purple-600/15 blur-[120px] rounded-full pointer-events-none" />
-          <div className="absolute top-1/3 left-1/4 w-[300px] h-[300px] bg-indigo-600/10 blur-[100px] rounded-full pointer-events-none" />
-          <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-pink-600/10 blur-[100px] rounded-full pointer-events-none" />
+        {/* HERO / GOLD ADMIN CONTROL BANNER */}
+        <section className="relative pt-16 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+          {/* Ambient Gold & Warm Glows */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[380px] bg-amber-500/10 blur-[140px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/3 left-1/4 w-[320px] h-[320px] bg-yellow-600/10 blur-[120px] rounded-full pointer-events-none" />
+          <div className="absolute top-1/3 right-1/4 w-[320px] h-[320px] bg-[#d4af37]/10 blur-[120px] rounded-full pointer-events-none" />
 
-          <div className="relative z-10 text-center max-w-3xl mx-auto space-y-6">
-            {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs text-zinc-300 shadow-inner">
-              <span className="flex h-2 w-2 rounded-full bg-purple-500 animate-pulse" />
-              <span>Aura UX Multi-Template Architecture</span>
-              <span className="text-zinc-600">|</span>
-              <span className="text-purple-400 font-semibold">1 Vercel Project</span>
+          <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
+            {/* 3D Gold Logo Showcase */}
+            <div className="flex justify-center mb-2">
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden shadow-2xl shadow-amber-500/30 border border-amber-500/40 bg-black p-1 group hover:scale-105 transition-all duration-300">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                  <Image
+                    src="/logo.png"
+                    alt="Aura UX Logo"
+                    fill
+                    sizes="112px"
+                    priority
+                    className="object-cover"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              One Vercel Project. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400">
-                Unlimited Website Templates.
+            {/* Admin Authenticated Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/90 border border-amber-500/30 text-xs text-zinc-300 shadow-inner">
+              <span className="flex h-2 w-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="text-amber-300 font-semibold tracking-wide">Admin Authorized Session</span>
+              <span className="text-zinc-600">|</span>
+              <span className="text-zinc-400">URL Tamper Guard Active</span>
+            </div>
+
+            {/* Headline with Gold Gradient */}
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight font-serif">
+              Aura UX Master <br />
+              <span className="gold-gradient-text">
+                Analog Panel of Templates
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl mx-auto">
-              Welcome to the Aura UX ecosystem. Organize, showcase, and deploy your complete collection of 
-              <strong className="text-zinc-200 font-medium"> Business</strong> and 
-              <strong className="text-zinc-200 font-medium"> Celebrations</strong> templates effortlessly under a single optimized codebase.
+              Central control hub for your multi-template system deployed at{" "}
+              <button
+                onClick={handleCopyBaseUrl}
+                className="text-amber-300 hover:text-amber-200 underline font-mono text-sm inline-flex items-center gap-1 font-semibold"
+                title="Click to copy"
+              >
+                <span>https://aurauxtemplates.vercel.app</span>
+                {copiedBase ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              </button>
+              . Copy direct template links to use inside your other website smoothly.
             </p>
 
+            {/* Quick Integration & Share Tools Bar */}
+            <div className="p-4 rounded-2xl bg-zinc-900/70 border border-amber-500/25 backdrop-blur-md max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-left shadow-lg shadow-black/50">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0">
+                  <Link2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white uppercase tracking-wider">External Website Link Hub</h4>
+                  <p className="text-[11px] text-zinc-400">
+                    Direct template URLs bypass lock screen; root and tampered URLs remain admin-locked.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  onClick={handleCopyAllLinks}
+                  className="w-full sm:w-auto py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#aa771c] hover:opacity-95 text-black font-bold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md shadow-amber-500/20"
+                >
+                  {copiedBatch ? <Check className="w-3.5 h-3.5 text-black font-bold" /> : <Copy className="w-3.5 h-3.5 text-black" />}
+                  <span>{copiedBatch ? "Copied All 14 Links!" : "Copy All Template Links"}</span>
+                </button>
+              </div>
+            </div>
+
             {/* Folder Highlight Stats */}
-            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto pt-4">
-              <div 
-                onClick={() => setSelectedCategory("business")} 
+            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto pt-2">
+              <div
+                onClick={() => setSelectedCategory("business")}
                 className={`cursor-pointer p-4 rounded-2xl border transition-all text-left group ${
-                  selectedCategory === "business" 
-                    ? "bg-indigo-950/40 border-indigo-500/50 shadow-lg shadow-indigo-950/40" 
-                    : "bg-zinc-900/40 border-zinc-800/80 hover:border-zinc-700"
+                  selectedCategory === "business"
+                    ? "bg-amber-950/30 border-amber-500/60 shadow-lg shadow-amber-950/40"
+                    : "bg-zinc-900/40 border-zinc-800/80 hover:border-amber-500/40"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
                     <Briefcase className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
                     /templates/business
                   </span>
                 </div>
@@ -84,19 +162,19 @@ export default function HomePage() {
                 <p className="text-xs text-zinc-400 mt-1">{businessCount} Ready-to-use Corporate & SaaS Templates</p>
               </div>
 
-              <div 
-                onClick={() => setSelectedCategory("celebrations")} 
+              <div
+                onClick={() => setSelectedCategory("celebrations")}
                 className={`cursor-pointer p-4 rounded-2xl border transition-all text-left group ${
-                  selectedCategory === "celebrations" 
-                    ? "bg-pink-950/40 border-pink-500/50 shadow-lg shadow-pink-950/40" 
-                    : "bg-zinc-900/40 border-zinc-800/80 hover:border-zinc-700"
+                  selectedCategory === "celebrations"
+                    ? "bg-amber-950/30 border-amber-500/60 shadow-lg shadow-amber-950/40"
+                    : "bg-zinc-900/40 border-zinc-800/80 hover:border-amber-500/40"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className="w-8 h-8 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
                     <PartyPopper className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                  <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">
                     /templates/celebrations
                   </span>
                 </div>
@@ -108,27 +186,27 @@ export default function HomePage() {
         </section>
 
         {/* TEMPLATE FILTER & CATALOG SECTION */}
-        <section id="templates-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <section id="templates-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Controls Bar */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-8 border-b border-zinc-800/80">
             {/* Category Pills */}
-            <div className="flex items-center p-1 bg-zinc-900/80 rounded-2xl border border-zinc-800 w-full sm:w-auto overflow-x-auto">
+            <div className="flex items-center p-1 bg-zinc-900/80 rounded-2xl border border-amber-500/20 w-full sm:w-auto overflow-x-auto">
               <button
                 onClick={() => setSelectedCategory("all")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
                   selectedCategory === "all"
-                    ? "bg-purple-600 text-white shadow-md"
+                    ? "bg-gradient-to-r from-[#d4af37] to-[#aa771c] text-black shadow-md"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
                 <LayoutGrid className="w-4 h-4" />
-                All ({TEMPLATES.length})
+                All Templates ({TEMPLATES.length})
               </button>
               <button
                 onClick={() => setSelectedCategory("business")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
                   selectedCategory === "business"
-                    ? "bg-indigo-600 text-white shadow-md"
+                    ? "bg-gradient-to-r from-[#d4af37] to-[#aa771c] text-black shadow-md"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
@@ -139,7 +217,7 @@ export default function HomePage() {
                 onClick={() => setSelectedCategory("celebrations")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2 whitespace-nowrap ${
                   selectedCategory === "celebrations"
-                    ? "bg-rose-600 text-white shadow-md"
+                    ? "bg-gradient-to-r from-[#d4af37] to-[#aa771c] text-black shadow-md"
                     : "text-zinc-400 hover:text-white"
                 }`}
               >
@@ -156,7 +234,7 @@ export default function HomePage() {
                 placeholder="Search templates, tags..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-zinc-900/80 border border-zinc-800 rounded-xl pl-10 pr-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-purple-500 transition-colors"
+                className="w-full bg-zinc-900/80 border border-amber-500/20 rounded-xl pl-10 pr-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-amber-400 transition-colors"
               />
             </div>
           </div>
@@ -176,7 +254,7 @@ export default function HomePage() {
                   setSelectedCategory("all");
                   setSearchQuery("");
                 }}
-                className="text-xs text-purple-400 hover:underline"
+                className="text-xs text-amber-400 hover:underline"
               >
                 Reset filters
               </button>
@@ -184,49 +262,49 @@ export default function HomePage() {
           )}
         </section>
 
-        {/* WHY SINGLE PROJECT ARCHITECTURE */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="rounded-3xl bg-zinc-900/40 border border-zinc-800/80 p-8 sm:p-12 relative overflow-hidden">
+        {/* SECURITY & DEPLOYMENT ARCHITECTURE DETAILS */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="rounded-3xl bg-zinc-900/40 border border-amber-500/20 p-8 sm:p-12 relative overflow-hidden">
             <div className="max-w-2xl space-y-4">
-              <span className="text-xs font-mono uppercase tracking-wider text-purple-400 font-semibold">
-                Developer & Deployment Architecture
+              <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+                Security & Multi-Site Integration Architecture
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                How this single Vercel deployment structure works
+              <h2 className="text-2xl sm:text-3xl font-bold text-white font-serif">
+                How external users and admin protection work together
               </h2>
               <p className="text-zinc-400 text-sm leading-relaxed">
-                By organizing all template code inside <code className="text-purple-300 bg-zinc-800 px-1.5 py-0.5 rounded">src/app/templates/business</code> and <code className="text-pink-300 bg-zinc-800 px-1.5 py-0.5 rounded">src/app/templates/celebrations</code>, Next.js generates static/SSR routes automatically for every subfolder.
+                External visitors clicking links from your other website directly reach individual template paths (like <code className="text-amber-300 bg-zinc-800 px-1.5 py-0.5 rounded">https://aurauxtemplates.vercel.app/templates/business/luxe-beauty</code>) with zero friction. If anyone attempts to navigate to the master domain, browse the analog panel, or tamper with the URL, the Edge Middleware automatically enforces Admin Passcode Authorization.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
-              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-2">
+              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-amber-500/20 space-y-2">
                 <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-                  <Zap className="w-4 h-4" />
-                </div>
-                <h4 className="font-semibold text-white text-sm">1 Project in Vercel</h4>
-                <p className="text-xs text-zinc-400">
-                  You only need to connect 1 GitHub repo to Vercel. No need to manage 10+ separate projects.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
-                  <Globe2 className="w-4 h-4" />
-                </div>
-                <h4 className="font-semibold text-white text-sm">Clean Subpaths</h4>
-                <p className="text-xs text-zinc-400">
-                  Each template has a dedicated URL like <span className="font-mono text-zinc-300">/templates/celebrations/wedding-elegance</span>.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-zinc-800/80 space-y-2">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
-                <h4 className="font-semibold text-white text-sm">Zero Styling Clashes</h4>
+                <h4 className="font-semibold text-white text-sm">URL Tamper Shield</h4>
                 <p className="text-xs text-zinc-400">
-                  Every template folder manages its own scoped components, layouts, and animations independently.
+                  Any attempt to manipulate URL paths, inspect non-public directories, or access unlisted routes is blocked by the Passcode Gate.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-amber-500/20 space-y-2">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                  <Globe2 className="w-4 h-4" />
+                </div>
+                <h4 className="font-semibold text-white text-sm">External Website Ready</h4>
+                <p className="text-xs text-zinc-400">
+                  Seamlessly link from buttons and cards on your other website directly to the live templates without exposing admin controls.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-zinc-950/60 border border-amber-500/20 space-y-2">
+                <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                  <Lock className="w-4 h-4" />
+                </div>
+                <h4 className="font-semibold text-white text-sm">Master Passcode Auth</h4>
+                <p className="text-xs text-zinc-400">
+                  Configurable via <code className="text-zinc-300 font-mono">ADMIN_PASSCODE</code> environment variable on Vercel (default: <code className="text-amber-300 font-mono">aura2025</code>).
                 </p>
               </div>
             </div>

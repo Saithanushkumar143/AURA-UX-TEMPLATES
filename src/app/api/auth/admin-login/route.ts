@@ -1,37 +1,45 @@
 import { NextResponse } from "next/server";
-import { ADMIN_PASSCODE, generateAdminSessionSignature } from "@/lib/security";
+import { ADMIN_COOKIE_NAME, verifyAdminPasscode } from "@/lib/auth";
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
-    const body = await request.json();
+    const body = await req.json();
     const { passcode } = body;
 
-    if (!passcode || passcode.trim() !== ADMIN_PASSCODE) {
+    if (!passcode || typeof passcode !== "string") {
       return NextResponse.json(
-        { success: false, error: "Invalid Admin Passcode" },
+        { success: false, message: "Passcode is required." },
+        { status: 400 }
+      );
+    }
+
+    if (!verifyAdminPasscode(passcode)) {
+      return NextResponse.json(
+        { success: false, message: "Invalid admin authorization passcode." },
         { status: 401 }
       );
     }
 
-    const sessionSig = await generateAdminSessionSignature();
+    // Set secure auth cookie
     const response = NextResponse.json({
       success: true,
-      message: "Admin authentication successful. Full access unlocked.",
+      message: "Admin authorization successful.",
     });
 
-    // Set secure admin session cookie (valid for 7 days)
-    response.cookies.set("aura_admin_session", sessionSig, {
-      path: "/",
+    response.cookies.set({
+      name: ADMIN_COOKIE_NAME,
+      value: "aura_admin_authenticated_" + Date.now(),
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      maxAge: 60 * 60 * 24 * 7,
       sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: "/",
     });
 
     return response;
-  } catch {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, error: "Internal server error during authentication" },
+      { success: false, message: "Internal server error during authorization." },
       { status: 500 }
     );
   }
